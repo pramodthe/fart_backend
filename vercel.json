@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/main.py",
+      "use": "@vercel/python",
+      "config": {
+        "runtime": "python3.10"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "backend/main.py"
+    }
+  ],
+  "functions": {
+    "backend/main.py": {
+      "maxDuration": 30,
+      "memory": 1024
+    }
+  },
+  "env": {
+    "REPLICATE_API_TOKEN": "your_replicate_api_token_here",
+    "USE_MOCK_AUDIO": "true"
+  }
+}
